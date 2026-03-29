@@ -1,0 +1,22 @@
+title: 技术分享博客
+author: 午睡猫
+description: 技术分享与个人成长记录
+baseurl: ""
+url: "https://LoneRANGERD.github.io"
+theme: minima
+
+# Jekyll 配置
+markdown: kramdown
+highlighter: rouge
+permalink: /:title/
+
+# 作者信息
+author:
+  name: 午睡猫
+  email: ""
+  github: LoneRANGERD
+
+# Build settings
+sass:
+  sass_dir: _sass
+  style: compressed
