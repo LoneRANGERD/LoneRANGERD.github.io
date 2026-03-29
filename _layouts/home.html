@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ site.title }}</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: #f8f9fa; color: #333; line-height: 1.7; }
+    .container { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
+    header { text-align: center; margin-bottom: 60px; }
+    header h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.02em; }
+    header .subtitle { color: #666; font-size: 1.15rem; }
+    nav { margin-top: 20px; }
+    nav a { color: #0366d6; text-decoration: none; margin: 0 15px; font-size: 0.95rem; }
+    nav a:hover { text-decoration: underline; }
+    .posts { list-style: none; }
+    .post-item { background: white; border-radius: 12px; padding: 28px 32px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: transform 0.2s, box-shadow 0.2s; }
+    .post-item:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+    .post-item h2 { font-size: 1.4rem; margin-bottom: 8px; }
+    .post-item h2 a { color: #1a1a1a; text-decoration: none; }
+    .post-item h2 a:hover { color: #0366d6; }
+    .post-item .meta { color: #888; font-size: 0.85rem; margin-bottom: 10px; }
+    .post-item p { color: #555; font-size: 0.95rem; }
+    .empty { text-align: center; color: #888; padding: 60px 0; }
+    footer { text-align: center; margin-top: 60px; color: #888; font-size: 0.9rem; }
+    @media (max-width: 600px) { header h1 { font-size: 2rem; } .post-item { padding: 22px 20px; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>{{ site.title }}</h1>
+      <p class="subtitle">{{ site.description }}</p>
+      <nav>
+        <a href="{{ site.baseurl }}/">首页</a>
+        <a href="{{ site.baseurl }}/about">关于</a>
+      </nav>
+    </header>
+    <ul class="posts">
+      {% for post in site.posts %}
+      <li class="post-item">
+        <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+        <p class="meta">{{ post.date | date: "%Y年%m月%d日" }}</p>
+        <p>{{ post.excerpt | strip_html | truncate: 80 }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+    {% if site.posts.size == 0 %}
+    <p class="empty">暂无文章，敬请期待。</p>
+    {% endif %}
+    <footer>
+      <p>&copy; {{ site.time | date: "%Y" }} {{ site.author }}. 由 <a href="https://jekyllrb.com">Jekyll</a> 驱动.</p>
+    </footer>
+  </div>
+</body>
+</html>
